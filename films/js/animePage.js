@@ -4,6 +4,10 @@ async function getAnimeInfo() {
   const json = await response.json();
   const data = json.data;
   const synopsis = data.synopsis.replace(/\r?\n|\r/g, '').replace('[Written by MAL Rewrite]', '');
+  let trailerLink = ''
+  if (data.trailer.url) {
+    trailerLink = `<a class="anime-info__text-trailer" target="_blank" href="${data.trailer.url}">Watch Trailer</a>`
+  }
   const animeInfoDiv = `<div class="anime-info__img">
   <img src="${data.images.webp.large_image_url}" alt="animeImg">
 </div>
@@ -14,7 +18,7 @@ async function getAnimeInfo() {
   <p class="anime-info__text-duration">Duration: ${data.duration}</p>
   <p class="anime-info__text-rating">Raiting: ${data.rating}</p>
   <p class="anime-info__text-synopsis">${synopsis}</p>
-  <a class="anime-info__text-trailer" target="_blank" href="${data.trailer.url}">Watch Trailer</a>
+  ${trailerLink}
 </div>`;
   const animeInfo = document.querySelector('.anime-info');
   animeInfo.insertAdjacentHTML('beforeend', animeInfoDiv)
