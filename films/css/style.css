@@ -14,14 +14,32 @@ body {
   margin: 0 auto;
 }
 
+/* Search */
+.search{
+  padding: 30px;
+}
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.search-form__input {
+  height: 50px;
+  width: 300px;
+  padding: 5px 15px;
+}
+
 /* Anime-list */
+.main {
+  padding: 0 0 50px 0;
+}
+
 .anime-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 30px;
-  padding: 50px 0;
 }
 
 .anime-list__item {
