@@ -1,0 +1,64 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    background-color: black;
+}
+
+.background {
+    position: absolute;
+    width: 100vw;
+    height: 300vh;
+    top: 0;
+    left: 0;
+}
+
+.layer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-size: cover;
+}
+
+#layer1 {
+    background-image: url('images/small-dots.png');
+    animation: slide 70s linear infinite;
+}
+
+#layer2 {
+    background-image: url('images/medium-dots.png');
+    animation: slide 60s linear infinite;
+}
+
+#layer3 {
+    background-image: url('images/big-dots.png');
+    animation: slide 50s linear infinite;
+}
+
+#layer4 {
+    background-image: url('images/huge-dots.png');
+    animation: slide 40s linear infinite;
+}
+
+#earth {
+    position: absolute;
+    left: -30%;
+    right: 0;
+    top: 50%;
+    width: 100vw;
+    height: 100vw;
+    background-size: cover;
+    background-image: url('images/earth-compresssed.png');
+    background-repeat: no-repeat;
+}
+
+@keyframes slide {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 -100vw;
+    }
+}
