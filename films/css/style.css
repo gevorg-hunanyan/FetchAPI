@@ -48,7 +48,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 15px;
+  gap: 5px;
 }
 .anime-list__item:hover .anime-list__item-hover{
   opacity: 1;
@@ -70,12 +70,18 @@ body {
   color: white;
   margin-bottom: auto;
 }
-.anime-list__item-descr p{
+.anime-list__item-text{
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.anime-list__item-genres{
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
 .anime-list__item-link {
   display: block;
   margin-left: auto;
