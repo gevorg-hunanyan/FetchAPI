@@ -49,7 +49,7 @@ async function fetchTopAnimes() {
 fetchTopAnimes()
 
 
-const search = document.querySelector('.search-input');
+const search = document.querySelector('.search-box__input');
 search.addEventListener('keydown', async (e) => {
   if (e.code === 'Enter') {
     if (e.target.value.length) {
