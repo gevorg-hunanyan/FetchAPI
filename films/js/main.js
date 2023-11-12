@@ -23,9 +23,10 @@ function createList(json) {
 
 function btnsListener(btns) {
   btns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', async (e) => {
       e.preventDefault()
-      console.log(btn.dataset.id)
+      sessionStorage.setItem('animeId', btn.dataset.id)
+      window.location.href = './animePage.html';
     })
   })
 }
@@ -67,6 +68,7 @@ search.addEventListener('keydown', async (e) => {
         }
       })
     }
+
     else return
   }
 })
