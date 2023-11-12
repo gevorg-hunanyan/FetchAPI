@@ -23,7 +23,7 @@ function createList(json) {
 
 function btnsListener(btns) {
   btns.forEach(btn => {
-    btn.addEventListener('click', async (e) => {
+    btn.addEventListener('click', (e) => {
       e.preventDefault()
       sessionStorage.setItem('animeId', btn.dataset.id)
       window.location.href = './animePage.html';
@@ -46,8 +46,11 @@ async function fetchTopAnimes() {
   const moreBtns = document.querySelectorAll('.anime-list__item-link');
   btnsListener(moreBtns)
 }
-fetchTopAnimes()
 
+
+
+
+fetchTopAnimes()
 
 const search = document.querySelector('.search-box__input');
 search.addEventListener('keydown', async (e) => {
@@ -68,7 +71,6 @@ search.addEventListener('keydown', async (e) => {
         }
       })
     }
-
     else return
   }
 })

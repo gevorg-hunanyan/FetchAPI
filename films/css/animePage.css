@@ -5,5 +5,43 @@
 }
 
 body {
-  background: #161616
+  background: url('../img/animeBg2.png') center center/cover no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1270px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.anime-info {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  background-color: #000000a5;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+.anime-info__text{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;  
+  font-size: 18px;
+}
+.anime-info__text-synopsis{
+  margin-top: auto;
+  font-size: 16px;
+}
+.anime-info__text-title {
+  font-size: 40px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  margin-left: -2px;
+  letter-spacing: 3.5px;
 }
