@@ -33,18 +33,29 @@ async function fetchTopAnimes() {
   const container = document.querySelector('.container--anime');
   const list = createList(json);
   container.append(list)
+  return list
 }
+let topList;
 fetchTopAnimes()
 
 
 const search = document.querySelector('.search-form__input');
 search.addEventListener('keydown', async (e) => {
   if (e.code === 'Enter') {
-    e.preventDefault();
-    const response = await fetch(`https://api.jikan.moe/v4/anime?q=${e.target.value}`)
-    const json = await response.json();
-    const container = document.querySelector('.container--anime');
-    const list = createList(json)
-    container.replaceChildren(list)
+    if (e.target.value.length) {
+      const topList=document.querySelector('.anime-list');
+      e.preventDefault();
+      const response = await fetch(`https://api.jikan.moe/v4/anime?q=${e.target.value}`)
+      const json = await response.json();
+      const container = document.querySelector('.container--anime');
+      const list = createList(json)
+      container.replaceChildren(list)
+      search.addEventListener('input',(e)=>{
+        if(!e.target.value.length){
+          container.replaceChildren(topList)
+        }
+      })
+    }
+    else return
   }
 })
