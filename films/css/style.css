@@ -23,10 +23,12 @@ body {
   justify-content: center;
 }
 
-.search-form__input {
+.search-input {
+  display: block;
   height: 50px;
   width: 300px;
   padding: 5px 15px;
+  margin: 0 auto;
 }
 
 /* Anime-list */

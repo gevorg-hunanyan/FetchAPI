@@ -13,12 +13,21 @@ function createList(json) {
           <p class="anime-list__item-genres">Genres: ${genres}</p>
           <p class="anime-list__item-text">${anime.synopsis}</p>
         </div>
-        <a class="anime-list__item-link" href="">More</a>
+        <a class="anime-list__item-link" data-id='${anime.mal_id}' href="">More</a>
       </div>
         </div>`
     list.insertAdjacentHTML("beforeend", newItem)
   })
   return list
+}
+
+function btnsListener(btns) {
+  btns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault()
+      console.log(btn.dataset.id)
+    })
+  })
 }
 
 async function fetchTopAnimes() {
@@ -33,25 +42,27 @@ async function fetchTopAnimes() {
   const container = document.querySelector('.container--anime');
   const list = createList(json);
   container.append(list)
-  return list
+  const moreBtns = document.querySelectorAll('.anime-list__item-link');
+  btnsListener(moreBtns)
 }
-let topList;
 fetchTopAnimes()
 
 
-const search = document.querySelector('.search-form__input');
+const search = document.querySelector('.search-input');
 search.addEventListener('keydown', async (e) => {
   if (e.code === 'Enter') {
     if (e.target.value.length) {
-      const topList=document.querySelector('.anime-list');
+      const topList = document.querySelector('.anime-list');
       e.preventDefault();
       const response = await fetch(`https://api.jikan.moe/v4/anime?q=${e.target.value}`)
       const json = await response.json();
       const container = document.querySelector('.container--anime');
       const list = createList(json)
       container.replaceChildren(list)
-      search.addEventListener('input',(e)=>{
-        if(!e.target.value.length){
+      const moreBtns = document.querySelectorAll('.anime-list__item-link');
+      btnsListener(moreBtns)
+      search.addEventListener('input', (e) => {
+        if (!e.target.value.length) {
           container.replaceChildren(topList)
         }
       })
