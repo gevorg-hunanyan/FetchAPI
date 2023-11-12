@@ -57,7 +57,7 @@ body {
 .anime-list__item-title {
   font-family: 'Roboto', sans-serif;
   color: #fff;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .anime-list__item-img {
@@ -77,7 +77,7 @@ body {
 
 .anime-list__item-text {
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
