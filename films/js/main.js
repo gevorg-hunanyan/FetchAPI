@@ -20,11 +20,12 @@ function createList(json) {
   })
   return list
 }
-
+const search = document.querySelector('.search-box__input');
 function btnsListener(btns) {
   btns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault()
+      e.preventDefault();
+      search.value='';
       sessionStorage.setItem('animeId', btn.dataset.id)
       window.location.href = './animePage.html';
     })
@@ -52,7 +53,7 @@ async function fetchTopAnimes() {
 
 fetchTopAnimes()
 
-const search = document.querySelector('.search-box__input');
+
 search.addEventListener('keydown', async (e) => {
   if (e.code === 'Enter') {
     if (e.target.value.length) {
@@ -74,3 +75,25 @@ search.addEventListener('keydown', async (e) => {
     else return
   }
 })
+
+
+// window.addEventListener('load', async () => {
+//   const animeName = sessionStorage.getItem('animeName')
+//   if (animeName) {
+//     const topList = document.querySelector('.anime-list');
+//     const response = await fetch(`https://api.jikan.moe/v4/anime?q=${animeName}`)
+//     const json = await response.json();
+//     const container = document.querySelector('.container--anime');
+//     const list = createList(json)
+//     container.replaceChildren(list)
+//     const moreBtns = document.querySelectorAll('.anime-list__item-link');
+//     btnsListener(moreBtns)
+//     search.addEventListener('input', (e) => {
+//       if (!e.target.value.length) {
+//         sessionStorage.removeItem('animeName')
+//         container.replaceChildren(topList)
+//       }
+//     })
+//   }
+
+// })
