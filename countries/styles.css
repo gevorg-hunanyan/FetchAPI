@@ -6,6 +6,28 @@ body, html {
     background-color: black;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+:root{
+    --bg-color: white;
+    --font-color: white;
+}
+
+.container:nth-child(1){
+    box-shadow: 0 0 5px rgba(100, 100, 100, 0.4);
+}
+
+.container{
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
+}
+
 .background {
     position: absolute;
     width: 100vw;
@@ -61,4 +83,41 @@ body, html {
     100% {
         background-position: 0 -100vw;
     }
+}
+
+.controls{
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    margin-right: 0;
+}
+
+.controls input{
+    outline: none;
+    border: none;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+}
+
+button{
+    width: 30px;
+    height: 30px;
+    border-width: 1px;
+    border-color: white;
+    outline: none;
+    align-self: center;
+    margin-right: 0;
+    background-image: url(images/search.png);
+    background-color: black;
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h1{
+    color: white;
+    font-family: Verdana;
+    align-self: center;
+    
 }
