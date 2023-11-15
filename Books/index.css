@@ -1,0 +1,32 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url("img/BackgroundImg.jpg");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  header {
+    margin-top: 8px;
+    background-color: #333;
+    max-height:10vh;
+    color: white;
+    padding: 20px 100px 20px 100px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  #searchForm {
+    display: flex;
+    max-height: 20vh;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
