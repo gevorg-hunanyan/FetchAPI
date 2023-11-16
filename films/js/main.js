@@ -58,7 +58,7 @@ function btnsListenersAdd() {
       fetchedAnimeInfo.then(res => {
         animeInfo.innerHTML = res;
         const closeBtn = document.querySelector('.anime-info--close ');
-        closeBtn.addEventListener('click',()=>{
+        closeBtn.addEventListener('click', () => {
           animeSection.classList.remove('active');
           animeInfo.innerHTML = '';
         })
@@ -96,11 +96,18 @@ search.addEventListener('keydown', async (e) => {
   }
 })
 
-async function showList(filterType, limit) {
+async function showList(filterType, limit=20) {
   const container = document.querySelector('.container--anime');
   const list = await fetchAnimes(filterType, limit);
-  console.log(list);
   container.replaceChildren(list);
   btnsListenersAdd();
 }
-showList('airing', 20);
+
+const searchButtons = document.querySelectorAll('.search-buttons__btn');
+searchButtons.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    search.value='';
+    showList(btn.dataset.filter, 20)
+  })
+})
+
