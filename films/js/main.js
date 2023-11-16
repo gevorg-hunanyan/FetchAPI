@@ -33,7 +33,9 @@ async function getAnimeInfo(id) {
   <img src="${data.images.webp.large_image_url}" alt="animeImg">
 </div>
 <div class="anime-info__text">
-  <p class="anime-info__text-title anime-info__text-title--eng">${data.title}</p>
+  <p class="anime-info__text-title anime-info__text-title--eng">${data.title}
+  <button class='anime-info--close'></button>
+  </p>
   <p class="anime-info__text-source">Source: ${data.source}</p>
   <p class="anime-info__text-episodes">Episodes: ${data.episodes}</p>
   <p class="anime-info__text-duration">Duration: ${data.duration}</p>
@@ -44,7 +46,7 @@ async function getAnimeInfo(id) {
   return animeInfoDiv;
 }
 
-// change so onclick new div with position absolute will be created 
+
 function btnsListenersAdd() {
   const btns = document.querySelectorAll('.anime-list__item-link');
   const animeInfo = document.querySelector('.anime-info');
@@ -54,7 +56,12 @@ function btnsListenersAdd() {
       e.preventDefault()
       const fetchedAnimeInfo = getAnimeInfo(btn.dataset.id);
       fetchedAnimeInfo.then(res => {
-        animeInfo.innerHTML = res
+        animeInfo.innerHTML = res;
+        const closeBtn = document.querySelector('.anime-info--close ');
+        closeBtn.addEventListener('click',()=>{
+          animeSection.classList.remove('active');
+          animeInfo.innerHTML = '';
+        })
         animeSection.classList.add('active');
       })
     })
@@ -62,7 +69,6 @@ function btnsListenersAdd() {
 }
 
 
-//fetchAnime and give filter as parameter*
 async function fetchAnimes(filterType, limit) {
   const baseUrl = 'https://api.jikan.moe/v4/top/anime';
   const url = new URL(baseUrl);
@@ -75,7 +81,6 @@ async function fetchAnimes(filterType, limit) {
 }
 
 
-//change code, so if Enter pressed, but input is empty - show warning
 const search = document.querySelector('.search-box__input');
 search.addEventListener('keydown', async (e) => {
   if (e.code === 'Enter') {
