@@ -5,95 +5,97 @@ function createList(json) {
     const genres = anime.genres.map(({ name }) => name).join(', ')
     const newItem = `
       <div class="anime-list__item">
-      <img class="anime-list__item-img" src="${anime.images.webp.large_image_url}"
-        alt="anime-img">
-      <div class="anime-list__item-hover">
-        <h3 class="anime-list__item-title">${anime.title}</h3>
-        <div class="anime-list__item-descr">
-          <p class="anime-list__item-genres">Genres: ${genres}</p>
-          <p class="anime-list__item-text">${anime.synopsis}</p>
+        <img class="anime-list__item-img" src="${anime.images.webp.large_image_url}" alt="anime-img">
+        <div class="anime-list__item-hover">
+          <h3 class="anime-list__item-title">${anime.title}</h3>
+          <div class="anime-list__item-descr">
+            <p class="anime-list__item-genres">Genres: ${genres}</p>
+            <p class="anime-list__item-text">${anime.synopsis}</p>
+          </div>
+          <a class="anime-list__item-link" data-id='${anime.mal_id}' href="">More</a>
         </div>
-        <a class="anime-list__item-link" data-id='${anime.mal_id}' href="">More</a>
-      </div>
-        </div>`
+      </div>`
     list.insertAdjacentHTML("beforeend", newItem)
   })
   return list
 }
-const search = document.querySelector('.search-box__input');
-function btnsListener(btns) {
+
+async function getAnimeInfo(id) {
+  const response = await fetch(`https://api.jikan.moe/v4/anime/${id}`)
+  const json = await response.json();
+  const data = json.data;
+  const synopsis = data.synopsis.replace(/\r?\n|\r/g, '').replace('[Written by MAL Rewrite]', '');
+  let trailerLink = ''
+  if (data.trailer.url) {
+    trailerLink = `<a class="anime-info__text-trailer" target="_blank" href="${data.trailer.url}">Watch Trailer</a>`
+  }
+  const animeInfoDiv = `<div class="anime-info__img">
+  <img src="${data.images.webp.large_image_url}" alt="animeImg">
+</div>
+<div class="anime-info__text">
+  <p class="anime-info__text-title anime-info__text-title--eng">${data.title}</p>
+  <p class="anime-info__text-source">Source: ${data.source}</p>
+  <p class="anime-info__text-episodes">Episodes: ${data.episodes}</p>
+  <p class="anime-info__text-duration">Duration: ${data.duration}</p>
+  <p class="anime-info__text-rating">Raiting: ${data.rating}</p>
+  <p class="anime-info__text-synopsis">${synopsis}</p>
+  ${trailerLink}
+</div>`;
+  return animeInfoDiv;
+}
+
+// change so onclick new div with position absolute will be created 
+function btnsListenersAdd() {
+  const btns = document.querySelectorAll('.anime-list__item-link');
+  const animeInfo = document.querySelector('.anime-info');
+  const animeSection = document.querySelector('.anime');
   btns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      search.value='';
-      sessionStorage.setItem('animeId', btn.dataset.id)
-      window.location.href = './animePage.html';
+      e.preventDefault()
+      const fetchedAnimeInfo = getAnimeInfo(btn.dataset.id);
+      fetchedAnimeInfo.then(res => {
+        animeInfo.innerHTML = res
+        animeSection.classList.add('active');
+      })
     })
   })
 }
 
-async function fetchTopAnimes() {
+
+//fetchAnime and give filter as parameter*
+async function fetchAnimes(filterType, limit) {
   const baseUrl = 'https://api.jikan.moe/v4/top/anime';
-  const filterType = 'airing';
-  const limit = 20;
   const url = new URL(baseUrl);
   url.searchParams.append('filter', filterType);
   url.searchParams.append('limit', limit);
   const response = await fetch(url);
   const json = await response.json();
-  const container = document.querySelector('.container--anime');
   const list = createList(json);
-  container.append(list)
-  const moreBtns = document.querySelectorAll('.anime-list__item-link');
-  btnsListener(moreBtns)
+  return list
 }
 
 
-
-
-fetchTopAnimes()
-
-
+//change code, so if Enter pressed, but input is empty - show warning
+const search = document.querySelector('.search-box__input');
 search.addEventListener('keydown', async (e) => {
   if (e.code === 'Enter') {
     if (e.target.value.length) {
-      const topList = document.querySelector('.anime-list');
-      e.preventDefault();
       const response = await fetch(`https://api.jikan.moe/v4/anime?q=${e.target.value}`)
       const json = await response.json();
       const container = document.querySelector('.container--anime');
       const list = createList(json)
       container.replaceChildren(list)
-      const moreBtns = document.querySelectorAll('.anime-list__item-link');
-      btnsListener(moreBtns)
-      search.addEventListener('input', (e) => {
-        if (!e.target.value.length) {
-          container.replaceChildren(topList)
-        }
-      })
+      btnsListenersAdd()
     }
     else return
   }
 })
 
-
-// window.addEventListener('load', async () => {
-//   const animeName = sessionStorage.getItem('animeName')
-//   if (animeName) {
-//     const topList = document.querySelector('.anime-list');
-//     const response = await fetch(`https://api.jikan.moe/v4/anime?q=${animeName}`)
-//     const json = await response.json();
-//     const container = document.querySelector('.container--anime');
-//     const list = createList(json)
-//     container.replaceChildren(list)
-//     const moreBtns = document.querySelectorAll('.anime-list__item-link');
-//     btnsListener(moreBtns)
-//     search.addEventListener('input', (e) => {
-//       if (!e.target.value.length) {
-//         sessionStorage.removeItem('animeName')
-//         container.replaceChildren(topList)
-//       }
-//     })
-//   }
-
-// })
+async function showList(filterType, limit) {
+  const container = document.querySelector('.container--anime');
+  const list = await fetchAnimes(filterType, limit);
+  console.log(list);
+  container.replaceChildren(list);
+  btnsListenersAdd();
+}
+showList('airing', 20);
