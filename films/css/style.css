@@ -6,7 +6,7 @@
 
 body {
   /* background: #161616 */
-  background: url('../img/2.jpg') center center/cover no-repeat;
+  background: url('../img/animeBg6.jpg') center center/cover no-repeat;
   background-attachment: fixed;
   min-height: 2000px;
 }
@@ -84,7 +84,7 @@ input:focus {
   position: absolute;
   z-index: 10;
   width: 295px;
-  right: -11px;
+  right: -9px;
   top: -183px;
 
 }
@@ -103,7 +103,7 @@ input:focus {
   position: absolute;
   z-index: 10;
   top: -247px;
-  left: 205px;
+  left: 210px;
   width: 210px;
 }
 
@@ -127,8 +127,8 @@ input:focus {
 }
 
 .search-buttons__btn span {
-  background: rgb(0, 172, 238);
-  background: linear-gradient(to right, #00b09b, #96c93d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* background: rgb(0,224,255);
+  background: linear-gradient(90deg, rgb(52 223 247) 0%, rgb(64 110 149) 100%); */
   display: block;
   position: absolute;
   width: 130px;
@@ -154,6 +154,11 @@ input:focus {
 }
 
 .search-buttons__btn span:nth-child(2) {
+  box-shadow:
+    inset 0 0 2px 0px rgb(255, 255, 255),
+    inset 0 0 2px 0px rgb(255, 255, 255),
+    inset 0 0 2px 0px rgba(176, 176, 176, 0.133),
+    inset 0 0 2px 0px rgba(178, 178, 178, 0.067);
   -webkit-transform: rotateX(0deg);
   -moz-transform: rotateX(0deg);
   transform: rotateX(0deg);
@@ -164,21 +169,19 @@ input:focus {
 
 .search-buttons__btn.active span:nth-child(1) {
   box-shadow:
-    inset 0 0 20px 0px rgb(255, 255, 255),
-    inset 0 0 5px 0px rgb(255, 255, 255),
-    inset 0 0 20px 0px rgba(176, 176, 176, 0.133),
-    inset 0 0 5px 0px rgba(178, 178, 178, 0.067);
+    inset 0 0 5px 0px rgb(21, 177, 197),
+    inset 0 0 10px 5px rgb(156, 239, 250);
   -webkit-transform: rotateX(0deg);
   -moz-transform: rotateX(0deg);
   transform: rotateX(0deg);
 }
 
 .search-buttons__btn.active span:nth-child(2) {
-  box-shadow: inset 2px 2px 2px 0px rgba(7, 236, 224, 0.951),
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.951),
     7px 7px 20px 0px rgba(0, 0, 0, .1),
     4px 4px 5px 0px rgba(0, 0, 0, .1);
   color: transparent;
-  
+
   -webkit-transform: rotateX(-90deg);
   -moz-transform: rotateX(-90deg);
   transform: rotateX(-80deg);
@@ -207,6 +210,8 @@ input:focus {
   align-self: stretch;
   /* same height for all flex items */
   position: relative;
+  border: 1px solid transparent;
+  transition: all .45s;
 }
 
 .anime-list__item-hover {
@@ -226,7 +231,12 @@ input:focus {
   gap: 5px;
 }
 
+.anime-list__item:hover {
+  border-color: white;
+}
+
 .anime-list__item:hover .anime-list__item-hover {
+
   opacity: 1;
 }
 
@@ -285,7 +295,7 @@ input:focus {
   z-index: 100;
   inset: 0;
   opacity: 0;
-  transition: all .7s;
+  transition: all .5s;
   visibility: hidden;
 }
 

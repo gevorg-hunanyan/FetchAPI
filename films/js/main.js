@@ -87,6 +87,13 @@ search.addEventListener('keydown', async (e) => {
     if (e.target.value.length) {
       const response = await fetch(`https://api.jikan.moe/v4/anime?q=${e.target.value}`)
       const json = await response.json();
+      const btns=document.querySelectorAll('.search-buttons__btn');
+      btns.forEach(btn=>{
+        if(btn.classList.contains('active')){
+          btn.classList.remove('active')
+        }
+      })
+      
       const container = document.querySelector('.container--anime');
       const list = createList(json)
       container.replaceChildren(list)
