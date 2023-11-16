@@ -96,7 +96,7 @@ search.addEventListener('keydown', async (e) => {
   }
 })
 
-async function showList(filterType, limit=20) {
+async function showList(filterType, limit = 20) {
   const container = document.querySelector('.container--anime');
   const list = await fetchAnimes(filterType, limit);
   container.replaceChildren(list);
@@ -106,8 +106,14 @@ async function showList(filterType, limit=20) {
 const searchButtons = document.querySelectorAll('.search-buttons__btn');
 searchButtons.forEach(btn => {
   btn.addEventListener('click', (e) => {
-    search.value='';
+    searchButtons.forEach(btn => {
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+      }
+    })
+    search.value = '';
+    btn.classList.add('active')
     showList(btn.dataset.filter, 20)
   })
 })
-
+showList('airing',20)

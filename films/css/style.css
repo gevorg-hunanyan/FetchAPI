@@ -8,7 +8,7 @@ body {
   /* background: #161616 */
   background: url('../img/2.jpg') center center/cover no-repeat;
   background-attachment: fixed;
-
+  min-height: 2000px;
 }
 
 input:focus {
@@ -24,7 +24,7 @@ input:focus {
 /* Search */
 .search {
   padding-top: 240px;
-  margin-bottom: 100px;
+  padding-bottom: 85px;
 }
 
 .search-box {
@@ -39,7 +39,7 @@ input:focus {
   width: 100%;
   height: 100%;
   position: relative;
-  margin-bottom: 45px;
+  margin-bottom: 25px;
 }
 
 .search-box__input {
@@ -107,10 +107,85 @@ input:focus {
   width: 210px;
 }
 
-.search-buttons{
+.search-buttons {
   display: flex;
   justify-content: space-between;
 }
+
+/* search-button animation  */
+.search-buttons__btn {
+  position: relative;
+  border: none;
+  box-shadow: none;
+  width: 130px;
+  line-height: 42px;
+  -webkit-perspective: 230px;
+  perspective: 230px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+}
+
+.search-buttons__btn span {
+  background: rgb(0, 172, 238);
+  background: linear-gradient(to right, #00b09b, #96c93d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: block;
+  position: absolute;
+  width: 130px;
+  height: 40px;
+  border-radius: 5px;
+  margin: 0;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+
+.search-buttons__btn span:nth-child(1) {
+
+  -webkit-transform: rotateX(90deg);
+  -moz-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  -webkit-transform-origin: 50% 50% -20px;
+  -moz-transform-origin: 50% 50% -20px;
+  transform-origin: 50% 50% -20px;
+}
+
+.search-buttons__btn span:nth-child(2) {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -webkit-transform-origin: 50% 50% -20px;
+  -moz-transform-origin: 50% 50% -20px;
+  transform-origin: 50% 50% -20px;
+}
+
+.search-buttons__btn.active span:nth-child(1) {
+  box-shadow:
+    inset 0 0 20px 0px rgb(255, 255, 255),
+    inset 0 0 5px 0px rgb(255, 255, 255),
+    inset 0 0 20px 0px rgba(176, 176, 176, 0.133),
+    inset 0 0 5px 0px rgba(178, 178, 178, 0.067);
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+
+.search-buttons__btn.active span:nth-child(2) {
+  box-shadow: inset 2px 2px 2px 0px rgba(7, 236, 224, 0.951),
+    7px 7px 20px 0px rgba(0, 0, 0, .1),
+    4px 4px 5px 0px rgba(0, 0, 0, .1);
+  color: transparent;
+  
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  transform: rotateX(-80deg);
+}
+
+
+
 
 /* Anime-list */
 .main {
@@ -234,7 +309,7 @@ input:focus {
   font-family: 'Roboto', sans-serif;
 }
 
-.anime.active .anime-info{
+.anime.active .anime-info {
   padding: 20px;
 }
 
@@ -273,9 +348,10 @@ input:focus {
   height: 35px;
   transition: all .4s;
   cursor: pointer;
-  box-shadow:inset 0 0 0.3rem crimson;
+  box-shadow: inset 0 0 0.3rem crimson;
 }
-.anime-info__text-title button:hover{
+
+.anime-info__text-title button:hover {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,0,0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M8 8 L24 24 M8 24 L24 8'/%3E%3C/svg%3E");
 }
 
@@ -289,4 +365,3 @@ input:focus {
   color: rgb(47, 186, 161);
   margin-top: auto;
 }
-
