@@ -5,7 +5,6 @@
 }
 
 body {
-  /* background: #161616 */
   background: url('../img/animeBg6.jpg') center center/cover no-repeat;
   background-attachment: fixed;
   min-height: 2000px;
@@ -127,8 +126,6 @@ input:focus {
 }
 
 .search-buttons__btn span {
-  /* background: rgb(0,224,255);
-  background: linear-gradient(90deg, rgb(52 223 247) 0%, rgb(64 110 149) 100%); */
   display: block;
   position: absolute;
   width: 130px;
