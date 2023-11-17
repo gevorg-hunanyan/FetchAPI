@@ -212,6 +212,7 @@ input:focus {
   position: relative;
   border: 1px solid transparent;
   transition: all .45s;
+  min-height: 400px;
 }
 
 .anime-list__item-hover {

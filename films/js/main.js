@@ -3,6 +3,7 @@ function createList(json) {
   list.classList.add('anime-list')
   json.data.forEach(anime => {
     const genres = anime.genres.map(({ name }) => name).join(', ')
+
     const newItem = `
       <div class="anime-list__item">
         <img class="anime-list__item-img" src="${anime.images.webp.large_image_url}" alt="anime-img">
@@ -37,9 +38,9 @@ async function getAnimeInfo(id) {
   <button class='anime-info--close'></button>
   </p>
   <p class="anime-info__text-source">Source: ${data.source}</p>
-  <p class="anime-info__text-episodes">Episodes: ${data.episodes}</p>
+  <p class="anime-info__text-episodes">Episodes: ${data.episodes ? data.episodes : 'Unknown'}</p>
   <p class="anime-info__text-duration">Duration: ${data.duration}</p>
-  <p class="anime-info__text-rating">Raiting: ${data.rating}</p>
+  <p class="anime-info__text-rating">Raiting: ${data.rating ? data.rating : 'Unknown'}</p>
   <p class="anime-info__text-synopsis">${synopsis}</p>
   ${trailerLink}
 </div>`;
@@ -87,13 +88,13 @@ search.addEventListener('keydown', async (e) => {
     if (e.target.value.length) {
       const response = await fetch(`https://api.jikan.moe/v4/anime?q=${e.target.value}`)
       const json = await response.json();
-      const btns=document.querySelectorAll('.search-buttons__btn');
-      btns.forEach(btn=>{
-        if(btn.classList.contains('active')){
+      const btns = document.querySelectorAll('.search-buttons__btn');
+      btns.forEach(btn => {
+        if (btn.classList.contains('active')) {
           btn.classList.remove('active')
         }
       })
-      
+
       const container = document.querySelector('.container--anime');
       const list = createList(json)
       container.replaceChildren(list)
@@ -123,4 +124,4 @@ searchButtons.forEach(btn => {
     showList(btn.dataset.filter, 20)
   })
 })
-showList('airing',20)
+showList('airing', 20)
