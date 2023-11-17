@@ -26,7 +26,7 @@ function showCountry(data) {
         <div class="country-name">
             ${data.name.common}
         </div>
-        <div class="other-info">
+        <div class="country-info">
             <div class="country-region">
                 <span class = info-name>region:</span>
                 <span class = info-info>${data.region}</span>
@@ -35,9 +35,6 @@ function showCountry(data) {
                 <span class = info-name>capital:</span>
                 <span class = info-info>${data.capital}</span>
             </div>
-            <div class="country-population">
-                <span class = info-name>population:</span>
-                <span class = info-info>${data.population}</span>
         </div>
     </div>`
 

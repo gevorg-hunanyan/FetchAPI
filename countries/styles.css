@@ -44,15 +44,20 @@ body, html {
 .country{
     background-color: black;
     width: 200px;
-    height: 200px;
+    height: 220px;
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     overflow: hidden;
     color: aliceblue;
     border-radius: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.country-details{
+    text-align: center;
 }
 
 .country-flag{
@@ -65,6 +70,20 @@ body, html {
 }
 
 .country-name{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+.country-info{
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.info-name{
+    color: rgb(130, 130, 130);
+}
+
+.info-info{
 
 }
 
