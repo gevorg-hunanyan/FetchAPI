@@ -1,7 +1,6 @@
 body, html {
     margin: 0;
     padding: 0;
-    overflow: hidden;
     height: 100%;
     background-color: black;
 }
@@ -18,21 +17,41 @@ body, html {
     --font-color: white;
 }
 
-.container:nth-child(1){
-    box-shadow: 0 0 5px rgba(100, 100, 100, 0.4);
-}
-
 .container{
-    max-width:1330px;
+    max-width: 1330px;
     padding: 0 15px;
     margin: 0 auto;
 }
 
+.window{
+    margin-top: 100px;
+    background-color: rgba(255, 255, 255, .1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, .2);
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-right: 2px solid rgba(255, 255, 255, .2);
+    border-bottom: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    padding: 50px 50px 50px;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.country{
+    background-color: aqua;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    display: inline-flex;
+}
 
 
 /* background */
 .background {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 300vh;
     top: 0;
@@ -40,7 +59,7 @@ body, html {
 }
 
 .layer {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     height: 100vh;
@@ -68,7 +87,7 @@ body, html {
 }
 
 #earth {
-    position: absolute;
+    position: fixed;
     left: -30%;
     right: 0;
     top: 50%;
@@ -92,6 +111,7 @@ body, html {
 /* Header */
 .header-wrapper{
     display: flex;
+    justify-content: space-between;
 
 }
 .controls{
