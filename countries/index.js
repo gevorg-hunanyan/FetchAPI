@@ -1,4 +1,6 @@
-const countries = document.querySelector('.window')
+const countries = document.querySelector('.window');
+const search = document.querySelector('.search');
+
 
 async function getCountries() {
     const url = await fetch('https://restcountries.com/v3.1/all');
@@ -14,6 +16,8 @@ async function getCountries() {
         showCountry(country);
     });
 }
+getCountries();
+
 
 function showCountry(data) {
     const country = document.createElement('div');
@@ -41,4 +45,14 @@ function showCountry(data) {
     countries.appendChild(country);
 }
 
-getCountries();
+
+const countryName = document.getElementsByClassName('country-name');
+search.addEventListener('input', e => {
+    Array.from(countryName).forEach(country => {
+        if (country.innerText.toLowerCase().includes(search.value.toLowerCase())) {
+            country.parentElement.parentElement.style.display = 'grid';
+        } else {
+            country.parentElement.parentElement.style.display = 'none';
+        }
+    })
+});

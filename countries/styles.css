@@ -26,6 +26,7 @@ body, html {
 /* -------------------- countries -------------------- */
 .window{
     margin-top: 100px;
+    margin-bottom: 100px;
     background-color: rgba(255, 255, 255, .1);
     box-shadow: 0 25px 45px rgba(0, 0, 0, .2);
     border-radius: 50px;
@@ -42,7 +43,7 @@ body, html {
 }
 
 .country{
-    background-color: black;
+    background-color: rgba(0, 0, 0, .75);
     width: 200px;
     height: 220px;
     padding: 10px;
@@ -54,6 +55,9 @@ body, html {
     color: aliceblue;
     border-radius: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-left: 2px solid rgba(255, 255, 255, .2);
+    border-top: 2px solid rgba(255, 255, 255, .2);
 }
 
 .country-details{
