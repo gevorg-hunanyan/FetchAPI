@@ -3,6 +3,13 @@ const countries = document.querySelector('.window')
 async function getCountries() {
     const url = await fetch('https://restcountries.com/v3.1/all');
     const res = await url.json();
+
+    res.sort((a,b) => {
+        const aName = a.name.common;
+        const bName = b.name.common;
+        return (aName < bName) ? -1 : (aName > bName) ? 1 : 0;
+      });
+
     res.forEach(country => {
         showCountry(country);
     });
@@ -17,16 +24,20 @@ function showCountry(data) {
     </div>
     <div class="country-details">
         <div class="country-name">
-            ${data.name}
+            ${data.name.common}
         </div>
-        <div class="country-region">
-            ${data.region}
-        </div>
-        <div class="country-capital">
-            ${data.capital}
-        </div>
-        <div class="country-population">
-            ${data.population}
+        <div class="other-info">
+            <div class="country-region">
+                <span class = info-name>region:</span>
+                <span class = info-info>${data.region}</span>
+            </div>
+            <div class="country-capital">
+                <span class = info-name>capital:</span>
+                <span class = info-info>${data.capital}</span>
+            </div>
+            <div class="country-population">
+                <span class = info-name>population:</span>
+                <span class = info-info>${data.population}</span>
         </div>
     </div>`
 
