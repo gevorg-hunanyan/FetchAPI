@@ -247,7 +247,6 @@ input:focus {
 .anime-list__item-img {
   display: block;
   max-width: 100%;
-  /* min-width: 260px; */
   object-fit: cover;
 }
 
