@@ -50,7 +50,7 @@ const countryName = document.getElementsByClassName('country-name');
 search.addEventListener('input', e => {
     Array.from(countryName).forEach(country => {
         if (country.innerText.toLowerCase().includes(search.value.toLowerCase())) {
-            country.parentElement.parentElement.style.display = 'grid';
+            country.parentElement.parentElement.style.display = 'flex';
         } else {
             country.parentElement.parentElement.style.display = 'none';
         }
