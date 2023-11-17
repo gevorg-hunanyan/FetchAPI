@@ -18,11 +18,12 @@ body, html {
 }
 
 .container{
-    max-width: 1330px;
+    max-width: 1220px;
     padding: 0 15px;
     margin: 0 auto;
 }
 
+/* -------------------- countries -------------------- */
 .window{
     margin-top: 100px;
     background-color: rgba(255, 255, 255, .1);
@@ -41,15 +42,33 @@ body, html {
 }
 
 .country{
-    background-color: aqua;
+    background-color: black;
     width: 200px;
     height: 200px;
     padding: 10px;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: aliceblue;
+    border-radius: 20px;
 }
 
+.country-flag{
+    height: 90px;
+    justify-content: center;
+}
 
-/* background */
+.country-flag img{
+    height: 100%;
+}
+
+.country-name{
+
+}
+
+/* -------------------- background -------------------- */
 .background {
     position: fixed;
     width: 100vw;
@@ -107,8 +126,7 @@ body, html {
     }
 }
 
-
-/* Header */
+/* -------------------- header -------------------- */
 .header-wrapper{
     display: flex;
     justify-content: space-between;
