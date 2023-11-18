@@ -14,6 +14,7 @@ function createBreedList(breedList){
     }).join("")}   
     </select>`
 
+
 }
 
   async function loadByBreed(breed){
@@ -21,6 +22,7 @@ function createBreedList(breedList){
         const response = await fetch(`https://dog.ceo/api/breed/${breed}/images`);
         const data = await response.json()
         gettingImage(data.message)
+        
     }
 
 }
@@ -29,11 +31,3 @@ function gettingImage(images){
     let i = Math.floor(Math.random() * len)
     document.getElementById("images").innerHTML =`<div class="image" style="background-image: url('${images[i]}')"></div>`
 }
-
-/*if(images.length){
-    const len = images.length;
-    let i = Math.floor(Math.random() * len)
-    document.getElementById("images").innerHTML =`<div class="image" style="background-image: url('${images[i]}')"></div>`
-    } else {
-        document.getElementById("images").innerHTML =`<div class="image" style="background-image: url('${images[i]}')">There isn't ${images[i]} images</div>`
-    }*/
