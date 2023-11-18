@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+body{
+    margin: 0;
+    background-color:#BFBBB9;
+    font-family: 'Pacifico', cursive;
+    letter-spacing: 2px;
+}
+.app{
+    height: 100%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.images{
+    background-color:rgb(241, 241, 240);
+    height: 500px;
+    width: 100%;
+    border:2px solid;
+    margin-top:10px;
+    padding: 5px;
+    position:relative;
+    
+}
+.image{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+}
+
+
+
+h1{
+    text-align:center;
+    font-size: 50px;
+    color:#53504e;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    font-family: 'Russo One', sans-serif;
+}
+
+select{
+    font-size: 18px;
+    height: 50px;
+    width: 250px;
+    border-radius: 5px;
+    border:2px solid ;
+    font-family: 'Pacifico', cursive;
+    letter-spacing: 2px;
+}
+select option{
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Pacifico', cursive;
+    letter-spacing: 2px;
+    font-weight:4px;
+    font-size:20px
+    
+    
+}
+
+select:hover{
+    background-color:#BFB7B2;
+    transition: 1s linear;
+    font-size:20px
+}
+
+
