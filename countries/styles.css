@@ -58,6 +58,15 @@ body, html {
     border: 2px solid rgba(255, 255, 255, .5);
     border-left: 2px solid rgba(255, 255, 255, .2);
     border-top: 2px solid rgba(255, 255, 255, .2);
+    cursor: pointer;
+    transition: background-color 1s ease-out;
+    transition: border .5s ease-in-out;
+}
+.country:hover{
+    background-color: rgba(5, 5, 72, 0.8);
+    border: 2px solid rgba(255, 255, 255, .8);
+    border-right: 2px solid rgba(255, 255, 255, .8);
+    border-bottom: 2px solid rgba(255, 255, 255, .8);
 }
 
 .country-details{
@@ -87,8 +96,31 @@ body, html {
     color: rgb(130, 130, 130);
 }
 
-.info-info{
+.country-page{
+    background-color: rgba(0, 0, 0, .75);
+    width: 200px;
+    height: 220px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+    color: aliceblue;
+    border-radius: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-left: 2px solid rgba(255, 255, 255, .2);
+    border-top: 2px solid rgba(255, 255, 255, .2);
+}
 
+.country-page-flag{
+    height: 90px;
+    justify-content: center;
+}
+
+.country-page img{
+    height: 100%;
 }
 
 /* -------------------- background -------------------- */
@@ -153,7 +185,6 @@ body, html {
 .header-wrapper{
     display: flex;
     justify-content: space-between;
-
 }
 .controls{
     display: flex;
