@@ -83,10 +83,8 @@ let countryData;
 async function onClickCountry() {
     countryData = await getCountry(this.innerText.split('\n')[0]);
 
-    console.log('countryData', countryData);
     Array.from(countryArray).forEach(ctr => ctr.style.display = 'none');
     showCountryPage();
-
 }
 //single
 function showCountryPage() {
@@ -94,7 +92,7 @@ function showCountryPage() {
     const countryPage = document.createElement('div');
     countryPage.classList.add('country-page');
     countryPage.innerHTML =
-        `<h1>Hello</h1>
+        `<h1>${main.name.official}</h1>
     <div class="country-page-flag">
         <img src=${main.flags.svg} alt="">
     </div>
@@ -111,8 +109,16 @@ function showCountryPage() {
                 <span class = info-name>capital:</span>
                 <span class = info-info>${main.capital}</span>
             </div>
+            <div class="country-region">
+                <span class = info-name>population:</span>
+                <span class = info-info>${main.population}</span>
+            </div>
+            <div class="country-region">
+                <span class = info-name>area:</span>
+                <span class = info-info>${main.area}</span>
+            </div>
         </div>
-        <button id="btn">button</btn>
+        <button id="btn">Back</btn>
     </div>`
     countries.appendChild(countryPage);
     const btn=document.querySelector('#btn')
@@ -120,5 +126,7 @@ function showCountryPage() {
 }
 
 function onClickBackButton() {
-
+    Array.from(countryArray).forEach(ctr => ctr.style.display = 'block');
+    const el=document.querySelector('.country-page');
+    el.remove()
 }
