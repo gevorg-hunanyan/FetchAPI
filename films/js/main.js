@@ -76,13 +76,20 @@ async function createAnimeInfoDiv(id) {
   return animeInfoDiv;
 }
 
-// Show anime list
-async function showList(filterType, limit = 20) {
-  const container = document.querySelector('.container--anime');
+
+//create loading element
+function loading() {
   const loading = document.createElement('div')
   loading.classList.add('loading')
   loading.innerHTML = `<img src="./icon/Spinner-1s-200px.svg" alt="" />`;
-  container.append(loading)
+  return loading
+}
+
+// Show anime list
+async function showList(filterType, limit = 20) {
+  const container = document.querySelector('.container--anime');
+  const loadingElement = loading()
+  container.append(loadingElement)
   const data = await fetchAnimes(filterType, limit);
   const list = createList(data)
   container.replaceChildren(list);
@@ -93,6 +100,9 @@ async function showList(filterType, limit = 20) {
 const search = document.querySelector('.search-box__input');
 search.addEventListener('keydown', async (e) => {
   if (e.code === 'Enter' && e.target.value.length) {
+    const container = document.querySelector('.container--anime');
+    const loadingElement = loading();
+    container.replaceChildren(loadingElement);
     const response = await fetch(`https://api.jikan.moe/v4/anime?q=${e.target.value}`)
     const json = await response.json();
     const data = await json.data;
@@ -102,7 +112,6 @@ search.addEventListener('keydown', async (e) => {
         btn.classList.remove('active')
       }
     })
-    const container = document.querySelector('.container--anime');
     const list = createList(data)
     container.replaceChildren(list)
   }
