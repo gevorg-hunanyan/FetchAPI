@@ -372,3 +372,10 @@ input:focus {
   color: rgb(47, 186, 161);
   margin-top: auto;
 }
+
+
+.loading{
+  display: flex;
+  justify-content: center; 
+  margin-top: 100px; 
+}

@@ -79,6 +79,10 @@ async function createAnimeInfoDiv(id) {
 // Show anime list
 async function showList(filterType, limit = 20) {
   const container = document.querySelector('.container--anime');
+  const loading = document.createElement('div')
+  loading.classList.add('loading')
+  loading.innerHTML = `<img src="./icon/Spinner-1s-200px.svg" alt="" />`;
+  container.append(loading)
   const data = await fetchAnimes(filterType, limit);
   const list = createList(data)
   container.replaceChildren(list);
