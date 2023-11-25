@@ -119,6 +119,8 @@ searchButtons.forEach(btn => {
   })
 })
 
+
+//check if clicked on btn with 'anime-list__item-link'
 const container = document.querySelector('.container--anime');
 container.addEventListener('click', (e) => {
   const target = e.target;
