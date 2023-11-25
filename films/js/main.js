@@ -50,28 +50,6 @@ function createList(data) {
   return list
 }
 
-//add event on every current 'More' btns
-function btnsListenersAdd() {
-  const btns = document.querySelectorAll('.anime-list__item-link');
-  const animeInfo = document.querySelector('.anime-info');
-  const animeSection = document.querySelector('.anime');
-  btns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault()
-      const fetchedAnimeInfo = createAnimeInfoDiv(btn.dataset.id);
-      fetchedAnimeInfo.then(res => {
-        animeInfo.innerHTML = res;
-        const closeBtn = document.querySelector('.anime-info--close ');
-        closeBtn.addEventListener('click', () => {
-          animeSection.classList.remove('active');
-          animeInfo.innerHTML = '';
-        })
-        animeSection.classList.add('active');
-      })
-    })
-  })
-}
-
 
 //take fetched info of anime and show it by creating new div
 async function createAnimeInfoDiv(id) {
@@ -104,30 +82,25 @@ async function showList(filterType, limit = 20) {
   const data = await fetchAnimes(filterType, limit);
   const list = createList(data)
   container.replaceChildren(list);
-  btnsListenersAdd();
 }
 
 
 //add event on search, so on Enter, every active button become inactive and new list of anime will created
 const search = document.querySelector('.search-box__input');
 search.addEventListener('keydown', async (e) => {
-  if (e.code === 'Enter') {
-    if (e.target.value.length) {
-      const response = await fetch(`https://api.jikan.moe/v4/anime?q=${e.target.value}`)
-      const json = await response.json();
-      const data = await json.data;
-      const btns = document.querySelectorAll('.search-buttons__btn');
-      btns.forEach(btn => {
-        if (btn.classList.contains('active')) {
-          btn.classList.remove('active')
-        }
-      })
-      const container = document.querySelector('.container--anime');
-      const list = createList(data)
-      container.replaceChildren(list)
-      btnsListenersAdd()
-    }
-    else return
+  if (e.code === 'Enter' && e.target.value.length) {
+    const response = await fetch(`https://api.jikan.moe/v4/anime?q=${e.target.value}`)
+    const json = await response.json();
+    const data = await json.data;
+    const btns = document.querySelectorAll('.search-buttons__btn');
+    btns.forEach(btn => {
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active')
+      }
+    })
+    const container = document.querySelector('.container--anime');
+    const list = createList(data)
+    container.replaceChildren(list)
   }
 })
 
@@ -146,5 +119,27 @@ searchButtons.forEach(btn => {
   })
 })
 
+const container = document.querySelector('.container--anime');
+container.addEventListener('click', (e) => {
+  const target = e.target;
+  if (target.classList.contains('anime-list__item-link')) {
+    e.preventDefault()
+    const animeInfo = document.querySelector('.anime-info');
+    const animeSection = document.querySelector('.anime');
+    const fetchedAnimeInfo = createAnimeInfoDiv(target.dataset.id);
+    fetchedAnimeInfo.then(res => {
+      animeInfo.innerHTML = res;
+      const closeBtn = document.querySelector('.anime-info--close ');
+      closeBtn.addEventListener('click', () => {
+        animeSection.classList.remove('active');
+        animeInfo.innerHTML = '';
+      })
+      animeSection.classList.add('active');
+    })
+  }
+})
 
-showList('airing', 20)
+
+//show airing anime-list (limit 20)
+showList('airing', 20);
+
