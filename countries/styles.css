@@ -1,0 +1,236 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: black;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+:root{
+    --bg-color: white;
+    --font-color: white;
+}
+
+.container{
+    max-width: 1220px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* -------------------- countries -------------------- */
+.window{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-color: rgba(255, 255, 255, .1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, .2);
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-right: 2px solid rgba(255, 255, 255, .2);
+    border-bottom: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    padding: 50px 50px 50px;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.country{
+    background-color: rgba(0, 0, 0, .75);
+    width: 200px;
+    height: 220px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+    color: aliceblue;
+    border-radius: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-left: 2px solid rgba(255, 255, 255, .2);
+    border-top: 2px solid rgba(255, 255, 255, .2);
+    cursor: pointer;
+    transition: background-color 1s ease-out;
+    transition: border .5s ease-in-out;
+}
+.country:hover{
+    background-color: rgba(5, 5, 72, 0.8);
+    border: 2px solid rgba(255, 255, 255, .8);
+    border-right: 2px solid rgba(255, 255, 255, .8);
+    border-bottom: 2px solid rgba(255, 255, 255, .8);
+}
+
+.country-details{
+    text-align: center;
+}
+
+.country-flag{
+    height: 90px;
+    justify-content: center;
+}
+
+.country-flag img{
+    height: 100%;
+}
+
+.country-name{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+.country-info{
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.info-name{
+    color: rgb(130, 130, 130);
+}
+
+.country-page{
+    background-color: rgba(0, 0, 0, .75);
+    width: 800px;
+    height: 1000px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    color: aliceblue;
+    border-radius: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-left: 2px solid rgba(255, 255, 255, .2);
+    border-top: 2px solid rgba(255, 255, 255, .2);
+}
+
+.country-page-flag{
+    height: 200px;
+    justify-content: center;
+}
+
+.country-page img{
+    height: 100%;
+}
+
+/* -------------------- background -------------------- */
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 300vh;
+    top: 0;
+    left: 0;
+}
+
+.layer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-size: cover;
+}
+
+#layer1 {
+    background-image: url('images/small-dots.png');
+    animation: slide 70s linear infinite;
+}
+
+#layer2 {
+    background-image: url('images/medium-dots.png');
+    animation: slide 60s linear infinite;
+}
+
+#layer3 {
+    background-image: url('images/big-dots.png');
+    animation: slide 50s linear infinite;
+}
+
+#layer4 {
+    background-image: url('images/huge-dots.png');
+    animation: slide 40s linear infinite;
+}
+
+#earth {
+    position: fixed;
+    left: -30%;
+    right: 0;
+    top: 50%;
+    width: 100vw;
+    height: 100vw;
+    background-size: cover;
+    background-image: url('images/earth-compresssed.png');
+    background-repeat: no-repeat;
+}
+
+@keyframes slide {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 -100vw;
+    }
+}
+
+/* -------------------- header -------------------- */
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+.controls{
+    display: flex;
+    align-items: center;
+    padding: 20px 0px 20px 20px;
+    margin-right: 0;
+}
+
+.controls input{
+    outline: none;
+    border: none;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+}
+
+button{
+    width: 30px;
+    height: 30px;
+    border-width: 1px;
+    border-color: white;
+    outline: none;
+    align-self: center;
+    margin-right: 0;
+    background-image: url(images/search.png);
+    background-color: black;
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+h1{
+    color: white;
+    font-family: Verdana;
+    align-self: center;
+    
+}
+
+main{
+    display: flex;
+}
+
+#btn{
+    width: 100px;
+    color: #fff;
+    padding: 5px 10px;
+    margin-top: 15px;
+}
+
