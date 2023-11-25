@@ -126,7 +126,7 @@ function showCountryPage() {
 }
 
 function onClickBackButton() {
-    Array.from(countryArray).forEach(ctr => ctr.style.display = 'block');
+    Array.from(countryArray).forEach(ctr => ctr.style.display = 'flex');
     const el=document.querySelector('.country-page');
     el.remove()
 }
