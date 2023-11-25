@@ -2,6 +2,10 @@ const baseURL = 'http://openlibrary.org/search.json?q=';
 let currentPage = 1;
 
 function searchBooks() {
+    const loadingDiv = document.getElementById('div');
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+    loadingDiv.innerHTML = `<img src='./img/loading.gif' /> `;
     currentPage = 1;
     const searchTerm = document.getElementById('searchInput').value;
     const currenValue = searchTerm.split(" ").join("+");
