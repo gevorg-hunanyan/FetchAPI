@@ -89,9 +89,9 @@ async function createAnimeInfoDiv(id) {
   <button class='anime-info--close'></button>
   </p>
   <p class="anime-info__text-source">Source: ${data.source}</p>
-  <p class="anime-info__text-episodes">Episodes: ${data.episodes ? data.episodes : 'Unknown'}</p>
+  <p class="anime-info__text-episodes">Episodes: ${data.episodes ?? 'Unknown'}</p>
   <p class="anime-info__text-duration">Duration: ${data.duration}</p>
-  <p class="anime-info__text-rating">Raiting: ${data.rating ? data.rating : 'Unknown'}</p>
+  <p class="anime-info__text-rating">Raiting: ${data.rating ?? 'Unknown'}</p>
   <p class="anime-info__text-synopsis">${synopsis}</p>
   ${trailerLink}
 </div>`;
